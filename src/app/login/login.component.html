@@ -1,0 +1,11 @@
+<div class="login-page">
+    <div class="form">
+      <form class="login-form">
+          <h1 class="fontText">ATQR</h1>
+        <input type="number" placeholder="Nro. Documento" name="document" [(ngModel)]="document"/>
+        <input type="password" placeholder="Contraseña" name="password" [(ngModel)]="password"/>
+        <p class="errorMessage" *ngIf="!isHidden">Faltan campos por completar</p>
+        <button (click)="validateLogIn()">Iniciar Sesión</button>
+      </form>
+    </div>
+  </div>
