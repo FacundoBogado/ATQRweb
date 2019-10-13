@@ -1,0 +1,4 @@
+ enum AssistanceStatus {
+    PRESENT,
+    ABSENT
+}

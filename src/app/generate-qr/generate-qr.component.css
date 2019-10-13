@@ -1,0 +1,32 @@
+.mid{
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 31%;
+    border: 0;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    display: inline-block;
+    margin-top: 2%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.items{
+    float: left;
+    margin: 3px;
+}

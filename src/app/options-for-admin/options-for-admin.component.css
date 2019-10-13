@@ -1,51 +1,83 @@
-.midText{
-    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
-    display: block;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+.midText {
+  font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+  display: block;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin: 1%;
 }
 
-.btn{
-    border: 1px solid #3498db;
-    background: none;
-    padding: 8%;
-    font-size: 190%;
-    width:29%;
-    cursor: pointer;
-    margin: 2%;
-    transition: 0.8s;
-    position: relative;
-    overflow: hidden;
-    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+.text {
+  font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+  display: block;
+  float: left;
+  text-align: center;
+  margin: 1%;
+  background-color: #e6e6e6;
+  width: 31%;
 }
 
-.btn3,.btn4{
-    color: #fff;
-  }
-  .btn1:hover,.btn2:hover{
-    color: #fff;
-  }
-  .btn3:hover,.btn4:hover{
-    color: #3498db;
-  }
-  .btn::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 0%;
-    background: #3498db;
-    z-index: -1;
-    transition: 0.8s;
-  }
-  .btn1::before,.btn3::before{
-    top: 0;
-    border-radius: 0 0 50% 50%;
-  }
-  .btn3::before,.btn4::before{
-    height: 180%;
-  }
-  .btn3:hover::before,.btn4:hover::before{
-    height: 0%;
-  }
+.btn {
+  border: 1px solid #3498db;
+  background: none;
+  padding: 8%;
+  font-size: 190%;
+  width: 29%;
+  cursor: pointer;
+  margin: 2%;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.btn-large {
+  border: 1px solid #3498db;
+  background: none;
+  padding: 5%;
+  font-size: 105%;
+  width: 280%;
+  cursor: pointer;
+  margin: 2%;
+  transition: 0.8s;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.btn3 {
+  color: #fff;
+}
+
+.btn3:hover {
+  color: #3498db;
+}
+
+.btn::before, .btn-large::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: #3498db;
+  z-index: -1;
+  transition: 0.8s;
+}
+
+.btn3::before {
+  top: 0;
+  border-radius: 0 0 50% 50%;
+}
+
+.btn3::before, .btn4::before {
+  height: 180%;
+}
+
+.btn3:hover::before, .btn4:hover::before {
+  height: 0%;
+}
+
+h5{
+  margin: 2%;
+}

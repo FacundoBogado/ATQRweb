@@ -1,0 +1,12 @@
+<div>
+    <a class="{{mainIcon}}" (click)="displayExtraOptions()" *ngIf="!backIcon"></a>
+    <a class="extraOptions" (click)="showMainIcon()">
+        <i *ngIf="backIcon" class="fas fa-chevron-left fa-2x"></i>
+    </a>
+    <a class="extraOptions">
+        <i *ngIf="backIcon" class="{{ icon }}"></i>
+    </a>
+    <a class="extraOptions" (click)="openModal()">
+        <i *ngIf="backIcon" class="fas fa-times fa-2x"></i>
+    </a>
+</div>

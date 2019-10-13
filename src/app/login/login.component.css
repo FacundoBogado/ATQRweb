@@ -103,3 +103,23 @@ body {
 .fontText{
   font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
+
+.invalid-feedback{
+  color:red;
+  font-size: 85%;
+}
+
+.form-group{
+  margin: 0 0 15px;
+}
+
+.form-control{
+  margin:0 !important;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}

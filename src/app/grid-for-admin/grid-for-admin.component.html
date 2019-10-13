@@ -1,0 +1,43 @@
+<div class="centered">
+  <input (keyup)='applyFilter($event.target.value)' placeholder="Buscar" class="input">
+  <button *ngIf="!isAssigment && isAdmin" class="btn">
+    <i class="icon fas fa-user-plus fa-2x"></i>
+    </button>
+    <button *ngIf="isAssigment && isAdmin" class="btn">
+      <i class="icon fas fa-file-signature fa-2x"></i> 
+    </button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th *ngIf="!isAssigment && isAdmin">Nombre completo</th>
+      <th *ngIf="isAssigment">Materia</th>
+      <th *ngIf="isProfessor && isAdmin">Cursos</th>
+      <th *ngIf="!isAssigment">Materias</th>
+      <th *ngIf="isAssigment">Profesores</th>
+      <th *ngIf="isAdmin">Eliminar</th>
+      <th *ngIf="!isAdmin && isProfessor">Generar QR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of objects; let i = index">
+      <td>{{i}}</td>
+      <td data-column="Nombre" *ngIf="isAdmin">{{data.name}}</td>
+      <td data-column="Nombre" routerLink="/details">{{data.name}}</td>
+      <td data-column="Cursos" *ngIf="isProfessor && isAdmin">
+        <app-extra-options objectType="{{objectType}}"></app-extra-options>
+      </td>
+      <td data-column="Materias" *ngIf="!isAssigment && isAdmin"><a><i class="fas fas fa-file-contract fa-2x"></i></a></td>
+      <td data-column="Profesores" *ngIf="isAssigment && isAdmin"></td>
+      <td data-column="Eliminar" *ngIf="isAdmin">
+        <a (click)="openDialog()">
+          <i *ngIf="isAssigment && isAdmin" class="far fa-file-excel fa-2x"></i>
+          <i *ngIf="isProfessor && isAdmin || isStudent && isAdmin" class="fas fa-user-minus fa-2x"></i>
+        </a>
+      </td>
+      <td data-column="Comenzar" *ngIf="!isAdmin"><i routerLink="/generarQR" class="fas fa-qrcode fa-2x"></i></td>
+    </tr>
+  </tbody>
+</table>
