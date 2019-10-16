@@ -18,6 +18,7 @@ export class GridForAdminComponent implements OnInit {
   objects = [];
   data: any[] = [];
 
+  
   constructor(private CommonService: CommonService) {
     this.objectType = "";
     this.isProfessor = false;
