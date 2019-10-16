@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-generate-qr',
@@ -15,8 +16,9 @@ export class GenerateQrComponent implements OnInit {
   generatedCodes: Array<string>;
   randomColor: Array<string>;
   subscription: Subscription;
+  action: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     const source = interval(5000);
@@ -25,15 +27,16 @@ export class GenerateQrComponent implements OnInit {
     this.generatedCodes = [];
     this.randomColor = [];
     this.isDisplayed = true;
+    this.action = null;
   }
 
   generateQR(){
     //if(this.inputText !== " " && this.inputText !== undefined){
-      //this.createdCode = this.inputText;
+      this.createdCode = this.inputText;
       this.createdCode = Math.random().toString(36).substring(7);
       this.isDisplayed = true;
-      //this.generatedCodes.push(this.inputText);
-      //this.randomColor.push('#' + Math.floor(Math.random()*16777215).toString(16));
+      this.generatedCodes.push(this.createdCode);
+      this.randomColor.push('#' + Math.floor(Math.random()*16777215).toString(16));
     //}
   }
 
@@ -52,6 +55,10 @@ export class GenerateQrComponent implements OnInit {
     console.log("student" + position);
     document.getElementById("student" + position).remove();
     delete this.generatedCodes[position];
+  }
+
+  redirectToView(){
+    this.router.navigate(['/cursoFinalizado']);
   }
   
   //INVESTIGAR GET EN TYPESCRIPT

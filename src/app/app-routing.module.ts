@@ -9,6 +9,7 @@ import { StudentAbmComponent } from './abm/student-abm/student-abm.component';
 import { GenerateQrComponent } from './generate-qr/generate-qr.component';
 import { AvalibleAsignaturesComponent } from './avalible-asignatures/avalible-asignatures.component';
 import { AsignatureDetailsComponent } from './asignature-details/asignature-details.component';
+import { FinishScreenComponent } from './finish-screen/finish-screen.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -19,8 +20,9 @@ const routes: Routes = [
   { path: 'listaMaterias', component: AssigmentAbmComponent },
   { path: 'listaEstudiantes', component: StudentAbmComponent },
   { path: 'generarQR', component: GenerateQrComponent },
-  { path: 'materiasDisponibles', component: AvalibleAsignaturesComponent },
+  { path: 'materiasDisponibles', component: AvalibleAsignaturesComponent},
   { path: 'details', component: AsignatureDetailsComponent },
+  { path: 'cursoFinalizado', component: FinishScreenComponent },
 
 ];
 

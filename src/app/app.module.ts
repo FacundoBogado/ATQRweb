@@ -37,6 +37,7 @@ import{ NgxQRCodeModule } from 'ngx-qrcode2';
 import { AvalibleAsignaturesComponent } from './avalible-asignatures/avalible-asignatures.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AsignatureDetailsComponent } from './asignature-details/asignature-details.component';
+import { FinishScreenComponent } from './finish-screen/finish-screen.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { AsignatureDetailsComponent } from './asignature-details/asignature-deta
     GenerateQrComponent,
     AvalibleAsignaturesComponent,
     AsignatureDetailsComponent,
+    FinishScreenComponent,
   ],
   imports: [
     BrowserModule,

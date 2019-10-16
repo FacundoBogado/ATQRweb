@@ -47,8 +47,7 @@ export class LoginComponent implements OnInit {
         }else{
           this.errorMessage = true;
         }
-      }
+      }      
     )
   }
-
 }

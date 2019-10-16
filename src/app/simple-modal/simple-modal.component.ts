@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-simple-modal',
@@ -9,10 +9,20 @@ export class SimpleModalComponent implements OnInit {
   @Input() message: string;
   @Input() title: string;
   @Input() buttonMessage: string;
+  @Input() buttonStyle: string = "";
+  @Output() action = new EventEmitter();
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
+    if(this.buttonStyle == ""){
+      this.buttonStyle = "btn btn-outline-primary";
+    }
+  }
+
+  triggerAction(){
+    this.action.emit();
   }
 
 }

@@ -1,9 +1,10 @@
-.mid{
+.mid {
     display: block;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     width: 100%;
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
 }
 
 .input {
@@ -26,7 +27,27 @@ ul {
     list-style-type: none;
 }
 
-.items{
+.container-for-qr {
+    width: 100%;
+    position: relative;
+}
+
+.simple-modal {
+    position: fixed;
+    right: 1%;
+    bottom: 2%;
+    background-color: white;
+}
+
+.items {
     float: left;
     margin: 3px;
+}
+
+.list {
+    width: 95%;
+}
+
+.facuselacome{
+    width:3000px;
 }

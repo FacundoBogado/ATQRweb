@@ -1,0 +1,16 @@
+<div class="form-group">
+    <div class="midText">
+        <h1>La clase se ha cerrado satisfatoriamente!</h1>
+        <h3> Has cerrado Algoritmos el dia de hoy, {{date}} a las {{hours}}</h3><br />
+        <h2>Los alumnos faltantes fueron: </h2>
+    </div>
+
+    <div class="list-container">
+        <ul>
+            <li *ngFor="let student of students" class="list-group-item items">
+                <a>{{student.name}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<button class="btn btn-outline-info button" routerLink="/materiasDisponibles">Volver</button>

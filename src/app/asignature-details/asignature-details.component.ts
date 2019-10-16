@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { STUDENTS } from 'src/app/objects.json';
+import { FECHAS } from 'src/app/objects.json';
 
 @Component({
   selector: 'app-asignature-details',
@@ -8,11 +9,12 @@ import { STUDENTS } from 'src/app/objects.json';
 })
 export class AsignatureDetailsComponent implements OnInit {
   students = [];
+  dates = [];
 
   constructor() { }
 
   ngOnInit() {
     this.students = STUDENTS;
+    this.dates = FECHAS;
   }
-
 }

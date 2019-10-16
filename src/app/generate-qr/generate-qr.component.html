@@ -1,24 +1,26 @@
-<div>
-    <div class="mid">
-        <input type="text" [(ngModel)]="inputText" class="input">
-        <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="createdCode" *ngIf="isDisplayed" qrc-class="myQrCode">
-        </ngx-qrcode>
-    </div>
+<div class="container-for-qr">
     
     <div class="mid">
-        <button (click)="generateQR()" class="btn btn-outline-primary"> Generar QR</button>
-        <app-simple-modal [title]="'Eliminar QR'" [message]="'Estas seguro que deseas elimiar el codigo QR?'"
-            [buttonMessage]="'Borrar QR'">
+        <br/><h3>La cámara de los secretos ha sido abierta, enemigos de la materia temed</h3>
+        <ngx-qrcode qrc-class="facuselacome" [qrc-element-type]="elementType" [qrc-value]="createdCode" *ngIf="isDisplayed" qr-size="200" qr-margin="1">
+        </ngx-qrcode>
+
+        <app-simple-modal 
+            [buttonMessage]="'Terminar clase'"
+            [title]="'Estas seguro que deseas terminar la clase?'"
+            [message]="'Al terminar la clase los alumnos que no pudieron escanear el codigo quedaran ausentes'"
+            [buttonStyle]="'btn btn-outline-danger'"
+            (action)="redirectToView($event)">
         </app-simple-modal>
-        <button (click)="deleteQR()" class="btn btn-outline-primary">Borrar QR</button>
     </div>
+    
     <div class="list">
         <ul>
             <li *ngFor="let pages of generatedCodes; let i=index" class="list-group-item items" 
                 [style.background-color]="randomColor[i]"
                 id="student{{i}}">
                 <a>{{pages}}</a>
-                <a style="color:red" (click)="deleteItem(i)"> X</a>
+                <a style="color:red" (click)="deleteItem(i)"> X </a>
             </li>
         </ul>
     </div>
