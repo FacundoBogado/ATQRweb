@@ -1,16 +1,48 @@
 <div class="form-group">
     <div class="midText">
-        <h1>La clase se ha cerrado satisfatoriamente!</h1>
-        <h3> Has cerrado Algoritmos el dia de hoy, {{date}} a las {{hours}}</h3><br />
-        <h2>Los alumnos faltantes fueron: </h2>
+        <h1>{{title1}}</h1>
+        <div class=" midText d-flex">
+            <h3 class="emptyList"> {{subTitle1}}</h3>
+        </div>
     </div>
 
-    <div class="list-container">
-        <ul>
-            <li *ngFor="let student of students" class="list-group-item items">
-                <a>{{student.name}}</a>
+    <div class="midText">
+        <i class="fas fa-user-graduate fa-3x"></i>
+    </div><br />
+
+    <div class="d-flex" *ngIf="list1.length > 0">
+        <ul class="list-inline mx-auto justify-content-center">
+            <li *ngFor="let item of list1" class="list-group-item items">
+                <a>{{item.FullName}}</a>
             </li>
         </ul>
     </div>
+
+    <div class="midText d-flex" *ngIf="!list1.length > 0">
+        <div>
+            <h3>{{text}}</h3>
+        </div>
+    </div><br />
+
+    <div class="midText d-flex">
+        <h3 class="emptyList"> {{subTitle2}}</h3>
+    </div>
+
+    <div class="midText">
+        <i class="fas fa-bed fa-3x"></i>
+    </div><br />
+
+    <div class="d-flex" *ngIf="list2.length > 0">
+        <ul class="list-inline mx-auto justify-content-center">
+            <li *ngFor="let item of list2" class="list-group-item items">
+                <a>{{item.FullName}} </a>
+            </li>
+        </ul>
+    </div>
+    <div class="midText d-flex" *ngIf="!list2.length > 0">
+        <div>
+            <h3>{{text}}</h3>
+        </div>
+    </div>
+
 </div>
-<button class="btn btn-outline-info button" routerLink="/materiasDisponibles">Volver</button>

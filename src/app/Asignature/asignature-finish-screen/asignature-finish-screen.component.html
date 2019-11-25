@@ -1,0 +1,15 @@
+<app-finish-screen
+[title1]="title1"
+[subTitle1]="subTitle2"
+[subTitle2]="subTitle1"
+[url]="'/materiasDisponibles'"
+[list2]="absentStudents"
+[list1]="presentStudents">
+</app-finish-screen>
+
+<app-spinner *ngIf="hideSpinner" 
+    [isHidden]="true">
+</app-spinner>
+
+<app-back-button [url]="'/materiasDisponibles'">
+</app-back-button>

@@ -1,0 +1,57 @@
+<div class="midText">
+    <h2>Informacion de {{fullName}}</h2><br />
+
+    <i class="fas fa-user-graduate fa-3x"></i>
+    <div class="midText d-flex midText">
+        <table class="table">
+            <thead>
+              <tr class="table-primary">
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Datos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Nombre completo</td>
+                <td>{{fullName}}</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Documento</td>
+                <td>{{document}}</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Fecha de nacimiento</td>
+                <td>{{birth | date: 'dd/MM/yyyy'}}</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Email</td>
+                <td>{{mail}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div><br />
+
+    <i class="far fa-calendar-alt fa-3x"></i>
+    <div class="midText d-flex">
+        <div class="txt">
+            <h3>Las materias en las que esta anotado son:</h3>
+        </div>
+    </div>
+
+    <div class="list-container">
+        <ul class="list-centered">
+            <li *ngFor="let class of courses" class="list-group-item items">
+                <a>{{class.asignature.name}} </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<app-back-button [url]="'/listaEstudiantes'"></app-back-button>
+<app-spinner *ngIf="hideSpinner" [isHidden]="true">
+</app-spinner>

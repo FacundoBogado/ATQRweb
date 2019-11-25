@@ -1,0 +1,56 @@
+<div class="midText">
+    <h2>{{asignature}} la da el profesor <br /> {{fullName}}</h2><br />
+
+    <i class="fas fa-user-graduate fa-3x"></i>
+    <div class="midText d-flex">
+        <div class="txt">
+            <h3>Almunos que estan anotados a la materia:</h3>
+        </div>
+    </div><br />
+
+    <div class="midText d-flex" *ngIf="!studentsWithAsignature.length > 0">
+        <div>
+            <h3>Parece que esta vacío por aquí.</h3>
+        </div>
+    </div><br />
+
+    <div class="midText d-flex" *ngIf="studentsWithAsignature.length > 0">
+        <div class="mid pre-scrollable">
+            <div class="list">
+                <ul>
+                    <li *ngFor="let student of studentsWithAsignature; let i=index"
+                        class="list-group-item items scale-up-center remove-student"
+                        (click)="removeStudent(student.id)">
+                        <a class="content">{{student.firstName}} {{student.lastName}} </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><br />
+
+    <i class="fas fa-user-graduate fa-3x"></i>
+    <div class="midText d-flex">
+        <div class="txt">
+            <h3>Almunos que no estan anotados a la materia:</h3>
+        </div>
+    </div><br />
+
+    <div class="midText d-flex" *ngIf="!studentsWithoutAsignature.length > 0">
+        <div>
+            <h3>Parece que esta vacío por aquí.</h3>
+        </div>
+    </div><br />
+
+    <div class="midText d-flex" *ngIf="studentsWithoutAsignature.length > 0">
+        <div class="mid pre-scrollable">
+            <div class="list">
+                <ul>
+                    <li *ngFor="let student of studentsWithoutAsignature; let i=index"
+                        class="list-group-item items scale-up-center add-student" (click)="addStudent(student.id)">
+                        <a class="content">{{student.firstName}} {{student.lastName}} </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><br />
+</div>

@@ -1,43 +1,59 @@
-<div class="centered">
-  <input (keyup)='applyFilter($event.target.value)' placeholder="Buscar" class="input">
-  <button *ngIf="!isAssigment && isAdmin" class="btn">
-    <i class="icon fas fa-user-plus fa-2x"></i>
-    </button>
-    <button *ngIf="isAssigment && isAdmin" class="btn">
-      <i class="icon fas fa-file-signature fa-2x"></i> 
-    </button>
+<div>
+  <div class="centered">
+    <br />
+    <h2>Bienvenido {{fullname}}</h2>
+    <input (keyup)='applyFilter($event.target.value)' placeholder="Buscar" class="input">
+    <app-complex-modal *ngIf="!isAssigment && isAdmin" [header]="'Creacion de usuario'"
+      [buttonStyle]="'icon fas fa-user-plus fa-2x'" [isStudent]="isStudent">
+    </app-complex-modal>
+    <app-complex-modal *ngIf="isAssigment && isAdmin" [header]="'Creacion de Curso'"
+      [buttonStyle]="'icon fas fa-plus fa-2x'" [isAnUser]="false">
+    </app-complex-modal>
+    <div class="midText-error d-flex" role="alert" *ngIf="error" id="error">
+      <div class="alert alert-danger">
+          {{errorMessage}}
+      </div>
+    </div>
+  </div>
 </div>
 
-<table>
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-dark">
     <tr>
-      <th></th>
-      <th *ngIf="!isAssigment && isAdmin">Nombre completo</th>
-      <th *ngIf="isAssigment">Materia</th>
-      <th *ngIf="isProfessor && isAdmin">Cursos</th>
-      <th *ngIf="!isAssigment">Materias</th>
-      <th *ngIf="isAssigment">Profesores</th>
-      <th *ngIf="isAdmin">Eliminar</th>
-      <th *ngIf="!isAdmin && isProfessor">Generar QR</th>
+      <th *ngFor="let th of header" scope="col">{{th}}</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of objects; let i = index">
-      <td>{{i}}</td>
-      <td data-column="Nombre" *ngIf="isAdmin">{{data.name}}</td>
-      <td data-column="Nombre" routerLink="/details">{{data.name}}</td>
-      <td data-column="Cursos" *ngIf="isProfessor && isAdmin">
-        <app-extra-options objectType="{{objectType}}"></app-extra-options>
-      </td>
-      <td data-column="Materias" *ngIf="!isAssigment && isAdmin"><a><i class="fas fas fa-file-contract fa-2x"></i></a></td>
-      <td data-column="Profesores" *ngIf="isAssigment && isAdmin"></td>
-      <td data-column="Eliminar" *ngIf="isAdmin">
-        <a (click)="openDialog()">
-          <i *ngIf="isAssigment && isAdmin" class="far fa-file-excel fa-2x"></i>
-          <i *ngIf="isProfessor && isAdmin || isStudent && isAdmin" class="fas fa-user-minus fa-2x"></i>
+    <tr *ngFor="let cellData of objects; let i = index">
+      <td scope="row" id="index{{i}}">{{i}}</td>
+      <td (click)="redirectToView(redirect, cellData.Id)">{{cellData.Value}}</td>
+      <td *ngIf='isAssigment && isAdmin' (click)="redirectToView('asignature/add/', cellData.Id)"><i
+          class="fas fa-user-plus fa-2x"></i></td>
+      <td *ngIf="!isAssigment && isAdmin" (click)="redirectToView(editUrl, cellData.Id)">
+        <i class="fas fa-user-edit fa-2x"></i></td>
+      <td *ngIf="isAdmin && !isAssigment">
+        <a *ngIf="isStudent">
+          <app-simple-modal [title]="'Estas seguro que deseas eliminar el usuario?'"
+            [message]="'Tanto alumno como profesor no podran acceder mas'" [buttonStyle]="'fas fa-user-minus fa-2x'"
+            (action)="delete('student/' + cellData.Id)" [isButton]="false" [index]="i">
+          </app-simple-modal>
+        </a>
+        <a *ngIf="isProfessor">
+          <app-simple-modal [title]="'Estas seguro que deseas eliminar el usuario?'"
+            [message]="'Tanto alumno como profesor no podran acceder mas'" [buttonStyle]="'fas fa-user-minus fa-2x'"
+            (action)="delete('professor/' + cellData.Id)" [isButton]="false" [index]="i">
+          </app-simple-modal>
         </a>
       </td>
-      <td data-column="Comenzar" *ngIf="!isAdmin"><i routerLink="/generarQR" class="fas fa-qrcode fa-2x"></i></td>
+      <td data-column="Comenzar" *ngIf="!isAdmin"><i (click)="generateQR('/generarQR/', cellData.Id)"
+          class="fas fa-qrcode fa-2x"></i>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<div class="midText d-flex" *ngIf="!objects.length > 0">
+    <div>
+      <h3>Parece que esta vacío por aquí.</h3>
+    </div>
+  </div><br />

@@ -17,4 +17,15 @@
 .button {
   position: fixed;
   bottom: 2%;
+  right: 2%;
+}
+
+.emptyList {
+  background-color: #80aaed;
+  width: 50%;
+  align-self: center;
+}
+
+.btn{
+  margin: 3px;
 }

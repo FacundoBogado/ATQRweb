@@ -1,23 +1,32 @@
 <div class="login-page">
+  <div class="login-info-box">
+    <div class="bottomright fontText">
+      <h2>Asistencias al instante</h2>
+      <p>¿Cómo están tus asistencias?</p>
+    </div>
+  </div>
+
   <div class="form">
     <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h1 class="fontText">ATQR</h1>
       <div class="form-group">
-        <input type="number" placeholder="Nro. Documento" name="document" formControlName="username"
-          class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" min="0" [(ngModel)]="document"/>
+        <input type="text" placeholder="Nro. de documento" name="document" formControlName="username"
+          class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" min="0"  maxlength = "8"
+          [(ngModel)]="document" />
         <div *ngIf="submitted && f.username.errors" class="invalid-feedback fontText">
-          <div *ngIf="f.username.errors.required">Nro. de documento es requerido</div>
+          <div *ngIf="f.username.errors.required">El nro. de documento es requerido</div>
         </div>
       </div>
       <div class="form-group">
-        <input type="password" placeholder="Contraseña" name="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="password"/>
+        <input type="password" placeholder="Contraseña" name="password" formControlName="password" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="password" />
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback fontText">
-            <label *ngIf="f.password.errors.required">Contraseña es requirido</label>
+          <label *ngIf="f.password.errors.required">La contraseña es requerida</label>
         </div>
       </div>
       <button>Iniciar Sesión</button>
       <div class="fontText">
-        <label *ngIf="errorMessage">Datos incorrectos</label>
+        <label *ngIf="errorMessage">Los datos ingresados son incorrectos</label>
       </div>
     </form>
   </div>

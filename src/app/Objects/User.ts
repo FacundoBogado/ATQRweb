@@ -1,95 +1,108 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
-abstract class User{
-    private Id: number;
-    private FirstName: string;
-    private LastName: string;
-    private Document: number;
-    private Mail: string;
-    private Birth: Date;
-    private ImageUrl: string;
-    private Password: string;
-    private CreatedAt: Date;
+abstract class User {
+    private id: number;
+    private firstName: string;
+    private lastName: string;
+    private document: number;
+    private mail: string;
+    private birth: string;
+    private imageUrl: string;
+    private password: string;
+    private isAdmin: boolean = false;
 
     constructor() { }
-    
+
     public get getFirstName(): string {
-        return this.FirstName;
+        return this.firstName;
     }
 
     public set setFirstName(value: string) {
-        this.FirstName = value;
+        this.firstName = value;
     }
-    
+
     public get getLastName(): string {
-        return this.LastName;
+        return this.lastName;
     }
 
     public set setLastName(value: string) {
-        this.LastName = value;
+        this.lastName = value;
     }
-    
+
     public get getDocument(): number {
-        return this.Document;
+        return this.document;
     }
 
     public set setDocument(value: number) {
-        this.Document = value;
+        this.document = value;
     }
-    
+
     public get getMail(): string {
-        return this.Mail;
+        return this.mail;
     }
 
     public set setMail(value: string) {
-        this.Mail = value;
-    }
-    
-    public get getBirth(): Date {
-        return this.Birth;
+        this.mail = value;
     }
 
-    public set setBirth(value: Date) {
-        this.Birth = value;
+    public get getBirth(): string {
+        return this.birth;
     }
-    
+
+    public set setBirth(value: string) {
+        this.birth = value;
+    }
+
     public get getImageUrl(): string {
-        return this.ImageUrl;
+        return this.imageUrl;
     }
 
     public set setImageUrl(value: string) {
-        this.ImageUrl = value;
+        this.imageUrl = value;
     }
-    
+
     public get getPassword(): string {
-        return this.Password;
+        return this.password;
     }
 
     public set setPassword(value: string) {
-        this.Password = value;
-    }
-    
-    public get getCreatedAt(): Date {
-        return this.CreatedAt;
+        this.password = value;
     }
 
-    public set setCreatedAt(value: Date) {
-        this.CreatedAt = value;
+    public get getIsAdmin(): boolean {
+        return this.isAdmin;
+    }
+
+    public set setIsAdmin(value: boolean) {
+        this.isAdmin = value;
     }
 }
 
 @Injectable()
-export class Student extends User{
-    constructor(FirstName: string, LastName: string , Document: number , Mail: string , Birth: Date, ImageUrl: string, Password : string) {
+export class Student extends User {
+    constructor(FirstName: string, LastName: string, Document: number, Mail: string, Birth: string, ImageUrl: string, Password: string) {
         super();
+        this.setFirstName = FirstName;
+        this.setLastName = LastName;
+        this.setDocument = Document;
+        this.setMail = Mail;
+        this.setBirth = Birth;
+        this.setImageUrl = ImageUrl;
+        this.setPassword = Password;
     }
 }
 
 @Injectable()
-export class Professor extends User{
-    
-    constructor(FirstName: string, LastName: string , Document: number , Mail: string , Birth: Date, ImageUrl: string, Password : string, private http: HttpClient) {
+export class Professor extends User {
+
+    constructor(FirstName: string, LastName: string, Document: number, Mail: string, Birth: string, ImageUrl: string, Password: string) {
         super();
+        this.setFirstName = FirstName;
+        this.setLastName = LastName;
+        this.setDocument = Document;
+        this.setMail = Mail;
+        this.setBirth = Birth;
+        this.setImageUrl = ImageUrl;
+        this.setPassword = Password;
     }
 }

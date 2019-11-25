@@ -1,0 +1,42 @@
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" ngNativeValidate (ngSubmit)="onSubmit()">
+            <h3 class="fontText">Detalles de {{firstName}} {{lastName}}</h3>
+            <div class="alert alert-danger" role="alert" *ngIf="error" id="error">
+                {{errorMessages}}
+            </div>
+            <div class="form-group">
+                <ul class="list-group list-group-flush" required>
+                    <li class="list-group-item">Nombre:</li>
+                    <li class="list-group-item">
+                        <input type="text" class="form-control" name="firstName" placeholder="Ingrese primer nombre"
+                            id="firstName" value="{{firstName}}" required>
+                    </li>
+                    <li class="list-group-item">Apellido:</li>
+                    <li class="list-group-item">
+                        <input type="text" class="form-control" name="lastName"
+                            placeholder="Ingrese Apellido" id="lastName" value="{{lastName}}" required>
+
+                    </li>
+                    <li class="list-group-item">Documento:</li>
+                    <li class="list-group-item">
+                        <input type="number" class="form-control" name="document"
+                            placeholder="Ingrese documento" id="document" min="0" value="{{document}}" required>
+                    </li>
+                    <li class="list-group-item">Email:</li>
+                    <li class="list-group-item">
+                        <input type="email" class="form-control" name="email" id="email"
+                            placeholder="Ingrese email" value="{{email}}" required>
+                    </li>
+                    <li class="list-group-item">Contraseña: </li>
+                    <li class="list-group-item">
+                        <input type="password" class="form-control" name="password"
+                            id="password" placeholder="Ingrese contraseña" value="{{password}}" required>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-outline-danger" routerLink="{{back}}">Cancelar</button>
+                <button type="submit" class="btn btn-outline-success" (click)="onSubmit()">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

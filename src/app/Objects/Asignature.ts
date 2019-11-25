@@ -1,23 +1,23 @@
 export class Asignature {
     private Id: number;
-    private Name: string;
-    private Code: string;
+    private name: string;
+    private code: string;
 
     constructor() { }
 
     public get getCode(): string {
-        return this.Code;
+        return this.code;
     }
 
     public set setCode(value: string) {
-        this.Code = value;
+        this.code = value;
     }
 
     public get getName(): string {
-        return this.Name;
+        return this.name;
     }
 
     public set setName(value: string) {
-        this.Name = value;
+        this.name = value;
     }    
 }

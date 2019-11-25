@@ -1,27 +1,26 @@
-<div class="container-for-qr">
-    
-    <div class="mid">
-        <br/><h3>La cámara de los secretos ha sido abierta, enemigos de la materia temed</h3>
-        <ngx-qrcode qrc-class="facuselacome" [qrc-element-type]="elementType" [qrc-value]="createdCode" *ngIf="isDisplayed" qr-size="200" qr-margin="1">
-        </ngx-qrcode>
+<div class="container-for-qr" *ngIf="!wasAlreadyOpened">
+    <br /><h3 class="midText">¡Clase iniciada! Escanee el código QR para dar el presente:</h3> <br/>
 
-        <app-simple-modal 
-            [buttonMessage]="'Terminar clase'"
-            [title]="'Estas seguro que deseas terminar la clase?'"
-            [message]="'Al terminar la clase los alumnos que no pudieron escanear el codigo quedaran ausentes'"
-            [buttonStyle]="'btn btn-outline-danger'"
-            (action)="redirectToView($event)">
+    <div class="mid qr">
+        <qr-code [value]="createdCode" [size]="300"></qr-code><br />
+        <br />
+        <app-simple-modal [buttonMessage]="'Terminar clase'" [title]="'¿Está seguro que desea terminar la clase?'"
+            [message]="'Al terminar la clase, los alumnos que no escanearon el código QR quedarán ausentes.'"
+            [buttonStyle]="'btn btn-outline-danger'" (action)="redirectToView($event)">
         </app-simple-modal>
     </div>
-    
-    <div class="list">
-        <ul>
-            <li *ngFor="let pages of generatedCodes; let i=index" class="list-group-item items" 
-                [style.background-color]="randomColor[i]"
-                id="student{{i}}">
-                <a>{{pages}}</a>
-                <a style="color:red" (click)="deleteItem(i)"> X </a>
-            </li>
-        </ul>
+
+    <div class="mid presentStudents pre-scrollable">
+        <div class="list">
+            <ul>
+                <li *ngFor="let pages of generatedCodes; let i=index" class="list-group-item items scale-up-center"
+                    [style.background-color]="randomColor[i]" id="student{{i}}">
+                    <a class="content">{{pages}} </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
+<app-modal-error [header]="'Ups, hubo un error al iniciar la clase'"
+[errorMessage]="errorMessage" [url]="'/materiasDisponibles'" *ngIf="wasAlreadyOpened">
+</app-modal-error>

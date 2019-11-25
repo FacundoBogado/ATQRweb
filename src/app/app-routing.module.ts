@@ -7,9 +7,17 @@ import { ProfessorAbmComponent } from './abm/professor-abm/professor-abm.compone
 import { AssigmentAbmComponent } from './abm/assigment-abm/assigment-abm.component';
 import { StudentAbmComponent } from './abm/student-abm/student-abm.component';
 import { GenerateQrComponent } from './generate-qr/generate-qr.component';
-import { AvalibleAsignaturesComponent } from './avalible-asignatures/avalible-asignatures.component';
-import { AsignatureDetailsComponent } from './asignature-details/asignature-details.component';
-import { FinishScreenComponent } from './finish-screen/finish-screen.component';
+import { AvalibleAsignaturesComponent } from './Asignature/avalible-asignatures/avalible-asignatures.component';
+import { AsignatureDetailsComponent } from './Asignature/asignature-details/asignature-details.component';
+import { ErrorViewComponent } from './Common/Views/error-view/error-view.component';
+import { StudentDetailsComponent } from './Student/student-details/student-details.component';
+import { ProfessorDetailsComponent } from './Professor/professor-details/professor-details.component';
+import { AsignatureFinishScreenComponent } from './Asignature/asignature-finish-screen/asignature-finish-screen.component';
+import { StudentInformationComponent } from './Student/student-information/student-information.component';
+import {StudentEditionComponent} from './Student/student-edition/student-edition.component'
+import { ProfessorEditionComponent } from './Professor/professor-edition/professor-edition.component';
+import { AddStudentAsignatureComponent } from './Student/add-student-asignature/add-student-asignature.component';
+import { AsignatureAdminDetailsComponent } from './Asignature/asignature-admin-details/asignature-admin-details.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -19,10 +27,18 @@ const routes: Routes = [
   { path: 'listaProfesor', component: ProfessorAbmComponent },
   { path: 'listaMaterias', component: AssigmentAbmComponent },
   { path: 'listaEstudiantes', component: StudentAbmComponent },
-  { path: 'generarQR', component: GenerateQrComponent },
+  { path: 'generarQR/:id', component: GenerateQrComponent },
   { path: 'materiasDisponibles', component: AvalibleAsignaturesComponent},
-  { path: 'details', component: AsignatureDetailsComponent },
-  { path: 'cursoFinalizado', component: FinishScreenComponent },
+  { path: 'details/:id', component: AsignatureDetailsComponent },
+  { path: 'clase/:id1/cursoFinalizado/:id2', component: AsignatureFinishScreenComponent },
+  { path: 'error', component: ErrorViewComponent },
+  { path: 'course/:id1/student/:id2/details', component: StudentDetailsComponent },
+  { path: 'professor/details/:id', component: ProfessorDetailsComponent },
+  { path: 'student/information/:id', component: StudentInformationComponent },
+  { path: 'edit/student/:id', component: StudentEditionComponent },
+  { path: 'edit/professor/:id', component: ProfessorEditionComponent },
+  { path: 'asignature/add/:id', component: AddStudentAsignatureComponent },
+  { path: 'admin/details/:id', component: AsignatureAdminDetailsComponent },
 
 ];
 

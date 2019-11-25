@@ -10,3 +10,13 @@ body{
     position: relative;
     height: 100%
 }
+
+.midText {
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: 1%;
+}

@@ -1,0 +1,57 @@
+<div class="midText">
+    <h2>Detalles de el alumno: </h2><br />
+    <h3> {{name}} tuvo un total de {{percentage}}% de asistencias en la materia</h3><br />
+    <div class="progress-container">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated {{progressBarStyle}}" role="progressbar"
+                [style.width]="percentage+'%' "></div>
+        </div>
+    </div><br />
+    <br />
+
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne"
+                        aria-expanded="false" aria-controls="collapseOne">
+                        Clases a las que asistio:
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="list-container">
+                    <ul>
+                        <li *ngFor="let classDay of dates" class="list-group-item items list-group-item-success">
+                            <a>La materia se dio el dia: {{classDay.date | date: 'dd/MM/yyyy'}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="false" aria-controls="collapseTwo">
+                        Clases a las que no asistio:
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="list-container">
+                    <ul>
+                        <li *ngFor="let classDay of absentClasses" class="list-group-item items list-group-item-danger">
+                            <a>La materia se dio el dia: {{classDay.date | date: 'dd/MM/yyyy'}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-spinner *ngIf="hideSpinner" [isHidden]="true">
+    </app-spinner>
+</div>
+<app-back-button [url]="'/details/' +courseId">
+</app-back-button>

@@ -1,10 +1,30 @@
 .mid {
-    display: block;
+    display: inline-block;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    width: 100%;
     font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.midText {
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+.qr {
+    width: 28%;
+}
+
+.presentStudents{
+    max-width: 70%;
+    min-width: 70%;
+    min-height: 346px;
+    border-style: solid;
+    border-color: #007bff;
 }
 
 .input {
@@ -25,6 +45,10 @@
 
 ul {
     list-style-type: none;
+}
+
+.qrcode>img {
+    width: 100%;
 }
 
 .container-for-qr {
@@ -48,6 +72,29 @@ ul {
     width: 95%;
 }
 
-.facuselacome{
-    width:3000px;
+.scale-up-center {
+    -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@-webkit-keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes scale-up-center {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }

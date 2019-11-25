@@ -1,0 +1,17 @@
+<app-edition-view
+[firstName]="firstName"
+[lastName]="lastName"
+[document]="document"
+[email]="email"
+[birth]="birth"
+[password]="password"
+[back]="'/listaProfesor'"
+[userToBeEdited]="professor"
+[isStudent]="false">    
+</app-edition-view>
+
+<app-back-button [url]="'/listaProfesor'">
+</app-back-button>
+
+<app-spinner *ngIf="hideSpinner" [isHidden]="true">
+</app-spinner> 

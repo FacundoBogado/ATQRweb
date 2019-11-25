@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ATQR';
+
+  setLocalStorage(id : number){
+    
+    localStorage.setItem("id", id.toString());
+  }
 }

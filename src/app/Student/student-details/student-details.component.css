@@ -1,0 +1,26 @@
+.midText {
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: 1%;
+}
+
+.progress-container{
+    width: 50%;
+    position: absolute;
+    right: 24%;
+}
+
+.items {
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    float: left;
+    margin: 3px;
+    margin-bottom: 20px;
+}
+
+#accordion{
+    width: 98%;
+}

@@ -1,0 +1,64 @@
+.midText {
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    display: block;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 1%;
+}
+
+.items {
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    float: left;
+    margin: 3px;
+}
+
+.list-container {
+    margin-bottom: 6%;
+}
+
+.list-centered {
+    align-self: center;
+}
+
+.txt {
+    background-color: #80aaed;
+    width: 50%;
+    align-self: center;
+}
+
+.add-student{
+
+  transition: 0.7s;
+}
+.add-student:hover {
+    color: white;;
+    background-color: #80aaed;
+    opacity: 0.5;
+}
+
+.add-student:hover .content{
+    display: none;
+}
+
+.add-student:hover:before {
+    content: "Agregar estudiante"
+}
+
+.remove-student{
+
+    transition: 0.7s;
+  }
+  .remove-student:hover {
+      color: white;;
+      background-color: #db1d1d;
+      opacity: 0.5;
+  }
+  
+  .remove-student:hover .content{
+      display: none;
+  }
+  
+  .remove-student:hover:before {
+      content: "Eliminar estudiante"
+  }

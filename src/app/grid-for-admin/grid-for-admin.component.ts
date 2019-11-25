@@ -1,8 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DATA } from 'src/app/objects.json';
-import { STUDENTS } from 'src/app/objects.json';
-import { ASSIGMENTS } from 'src/app/objects.json';
-import { CommonService } from '../Common/Services/common.service'; 
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonService } from '../Common/Services/common.service';
+
 @Component({
   selector: 'app-grid-for-admin',
   templateUrl: './grid-for-admin.component.html',
@@ -15,11 +14,18 @@ export class GridForAdminComponent implements OnInit {
   @Input() isAdmin: boolean;
   @Input() isStudent: boolean;
   @Input() objectType: string;
+  @Output() action = new EventEmitter();
+  @Input() data: any[] = [];
+  @Input() header: string[] = [];
+  @Input() fullname: string;
+  @Input() redirect: string;
+  @Input() editUrl: string;
   objects = [];
-  data: any[] = [];
+  arrayOfId =[];
+  error: boolean = false;
+  errorMessage: string;
 
-  
-  constructor(private CommonService: CommonService) {
+  constructor(private router: Router, private service: CommonService) {
     this.objectType = "";
     this.isProfessor = false;
     this.isAssigment = false;
@@ -28,31 +34,31 @@ export class GridForAdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    //if (this.isAdmin) {
-      /*if (this.isProfessor) {
-        const x = this.CommonService.getById(15, "professor").subscribe(
-          (data: any) => {
-            console.log(data);
-          }
-        );
-        //this.data = this.CommonService.getCollectionById(15);
-      } else if (this.objectType) {
-        this.data = STUDENTS;
-      } else if (this.isStudent) {
-        this.data = ASSIGMENTS;
-      }
-    }else{*/
-      if (this.isProfessor) {
-        this.data = ASSIGMENTS;
-      } else if (this.isAssigment) {
-        this.data = ASSIGMENTS;
-      }
-    //}
-
-    this.objects = this.data
+    this.action.emit();
+    this.objects = this.data;
+    this.arrayOfId = this.objects;
   }
 
   applyFilter(value: string) {
-    this.objects = this.data.filter(object => object.name.toLocaleUpperCase().includes(value.toLocaleUpperCase()));
+    this.objects = this.data.filter(object => object.Value.toLocaleUpperCase().includes(value.toLocaleUpperCase()));
+  }
+
+  redirectToView(url: string, id: number) {
+    this.router.navigate([url + id])
+  }
+
+  generateQR(url: string, id: number) {
+    this.router.navigate([url + id]);
+  }
+
+  delete(object: string) {
+    this.service.delete(object).subscribe(
+      (data: any) => {
+        window.location.reload();        
+      }, error => {
+        this.errorMessage = error.error.message;
+        this.error = true;
+      }
+    )
   }
 }

@@ -1,0 +1,40 @@
+<button type="button" class="btn btn-outline-primary modalTrigger" data-toggle="modal" data-target="#asignatureModal">
+    <i class="{{buttonStyle}}"></i></button>
+
+<div class="modal fade" id="asignatureModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{header}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Ingrese Nombre" id="name"
+                            formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback fontText">
+                            <div *ngIf="f.name.errors.required">Nombre es requerido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Codigo</label>
+                        <input type="text" class="form-control" placeholder="Ingrese Codigo" id="code"
+                            formControlName="code" [ngClass]="{ 'is-invalid': submitted && f.code.errors }">
+                        <div *ngIf="submitted && f.code.errors" class="invalid-feedback fontText">
+                            <div *ngIf="f.code.errors.required">Codigo es requerido</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Close</button>
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

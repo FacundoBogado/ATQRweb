@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { STUDENTS } from 'src/app/objects.json';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-finish-screen',
@@ -7,16 +8,28 @@ import { STUDENTS } from 'src/app/objects.json';
   styleUrls: ['./finish-screen.component.css']
 })
 export class FinishScreenComponent implements OnInit {
-  date: string;
-  hours: string;
-  students = [];
+  @Input() title1: string;
+  @Input() subTitle1: string;
+  @Input() subTitle2: string;
+  @Output() action = new EventEmitter();
+  @Input() url: string;
+  @Input() data2: Array<any>;
+  @Input() list1: Array<any>;
+  @Input() list2: Array<any>;
+  text: string = "";
 
-  constructor() { }
+  constructor(private router: Router, private location: Location) { }
 
   ngOnInit() {
-    this.students = STUDENTS;
-    const today = new Date();
-    this.date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-    this.hours = today.getHours() + ":" + today.getMinutes();
+    this.action.emit();
+    this.text = "Parece que esta vacío por aquí.";
+  }
+
+  redirectToView(url: string) {
+    if (url !== "" && url !== undefined) {
+      this.router.navigate([url]);
+    }else{
+      this.location.back();
+    }
   }
 }

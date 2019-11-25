@@ -1,6 +1,17 @@
 <app-grid-for-admin 
 [isProfessor]="false"  
 [objectType]="'Assigment'"
+[header]="header"
+(action)="getProfessors($event)"
+[data] = "professors"
 [isAssigment]="true"
+[redirect]="url"
 [isAdmin]="true">
 </app-grid-for-admin>
+
+<app-spinner *ngIf="hideSpinner"
+    [isHidden]="true">
+</app-spinner>
+
+<app-back-button [url]="'/menuAdmin'">
+</app-back-button>

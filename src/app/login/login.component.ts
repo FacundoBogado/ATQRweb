@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { LoginBody } from '../Objects/LoginBody';
+import { LoginBody } from '../Objects/Bodys';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
@@ -38,12 +37,19 @@ export class LoginComponent implements OnInit {
 
     const body = new LoginBody( this.document, this.password)
     
-    this.httpClient.post(`http://obscure-taiga-98790.herokuapp.com/student/login`,body)
+    this.httpClient.post(`http://obscure-taiga-98790.herokuapp.com/professor/login`,body)
     .subscribe(
       (data : any) => {
         if(data != null){
           this.errorMessage = false;
-          this.router.navigate(['/materiasDisponibles']);
+          if(data.isAdmin){
+            localStorage.setItem("isAdmin", data.isAdmin)
+            this.router.navigate(['/menuAdmin']);
+          }else{
+            localStorage.setItem("id", data.id.toString());
+            localStorage.setItem("isAdmin", data.isAdmin);
+            this.router.navigate(['/materiasDisponibles']);
+          }
         }else{
           this.errorMessage = true;
         }

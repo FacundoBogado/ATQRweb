@@ -1,0 +1,131 @@
+<button type="button" class="btn btn-outline-primary modalTrigger" data-toggle="modal" data-target="#exampleModal">
+    <i class="{{buttonStyle}}"></i></button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{header}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert" *ngIf="error" id="error">
+                    {{errorMessage}}
+                </div>
+                <form [formGroup]="loginForm" *ngIf="isAnUser">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Primer nombre</label>
+                        <input type="text" class="form-control" placeholder="Ingrese primer nombre" id="firstName"
+                            formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback fontText">
+                            <div *ngIf="f.firstName.errors.required">Primer nombre es requerido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apellido</label>
+                        <input type="text" class="form-control" placeholder="Ingrese apellido" id="lastName"
+                            formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback fontText">
+                            <div *ngIf="f.lastName.errors.required">Apellido es requerido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Documento</label>
+                        <input type="number" class="form-control" placeholder="Ingrese documento" id="document" min="0"
+                            formControlName="document" [ngClass]="{ 'is-invalid': submitted && f.document.errors }">
+                        <div *ngIf="submitted && f.document.errors" class="invalid-feedback fontText">
+                            <div *ngIf="f.document.errors.required">Nro. de documento es requerido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Fecha de nacimiento</label>
+                        <input type="date" class="form-control" placeholder="Ingrese fecha de nacimiento" id="birthDate"
+                            formControlName="birthDate" [ngClass]="{ 'is-invalid': submitted && f.birthDate.errors }">
+                        <div *ngIf="submitted && f.birthDate.errors" class="invalid-feedback fontText">
+                            <div *ngIf="f.birthDate.errors.required">Fecha de nacimiento es requerido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type=" " class="form-control" id="email" placeholder="Ingrese email"
+                            formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                        <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu email con alguien
+                            mas</small>
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback fontText">
+                            <div *ngIf="f.email.errors.required">Email es requerido</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="Ingrese contraseña"
+                            formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback fontText">
+                            <div *ngIf="f.password.errors.required">Contraseña es requerido</div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeModal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Crear</button>
+                </form>
+                <form ngNativeValidate *ngIf="!isAnUser && !createAsignature">
+                    <div *ngIf="!createAsignature">
+                        <label for="asignature">Materia</label>
+                        <div class="input-group">
+                            <select class="form-control" id="asignature" required>
+                                <option> </option>
+                                <option *ngFor="let a of asignatures" [value]="a.code" class="form-control">
+                                    {{a.name}}
+                                </option>
+                            </select> <button class="btn btn-outline-primary" type="button"
+                                (click)="displayCreationOptions()"><i class='icon fas fa-plus'></i></button>
+                        </div>
+                        <div class="form-group">
+                            <label for="professor">Profesor a cargo</label>
+                            <select class="form-control" id="professor" required>
+                                <option> </option>
+                                <option *ngFor="let p of professors" [value]="p.id" class="form-control">
+                                    {{p.firstName}} {{p.lastName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            id="closeModal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Crear</button>
+                    </div>
+                </form>
+                <form ngNativeValidate *ngIf="!isAnUser && createAsignature">
+                    <div>
+                        <label for="exampleInputEmail1">Nombre de la Materia</label>
+                        <div class="input-group">
+                            <button class="btn btn-outline-primary" type="button" (click)="displayCreationOptions()"><i
+                                    class='fas fa-long-arrow-alt-left'></i></button>
+                            <input type="text" class="form-control" placeholder="Ingrese Nombre" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Codigo de la Materia</label>
+                            <input type="text" class="form-control" placeholder="Ingrese Codigo" id="code" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="professor">Profesor a cargo</label>
+                        <select class="form-control" id="professor" required>
+                            <option></option>
+                            <option *ngFor="let p of professors" [value]="p.id" class="form-control">
+                                {{p.firstName}} {{p.lastName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            id="closeModal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Crear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

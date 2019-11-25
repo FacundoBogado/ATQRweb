@@ -1,0 +1,12 @@
+<app-grid-for-admin 
+[isProfessor]="true"
+(action)="getCourses($event)"
+[data]="avalibleAsignatures"
+[header]="header"
+[fullname]="professorName"
+[redirect]="url">
+</app-grid-for-admin>
+
+<app-spinner *ngIf="hideSpinner"
+    [isHidden]="true">
+</app-spinner>

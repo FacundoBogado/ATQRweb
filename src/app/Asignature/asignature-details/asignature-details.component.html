@@ -1,0 +1,54 @@
+<div class="midText">
+    <h2><br />Detalles de la materia {{asignature}}</h2>
+    <h4>Profesor: {{fullName}}</h4><br />
+
+    <i class="fas fa-user-graduate fa-3x"></i>
+    <div class="midText d-flex">
+        <div class="txt">
+            <h3>Alumnos inscriptos:</h3>
+        </div>
+    </div><br />
+
+    <div class="midText d-flex" *ngIf="!students.length > 0">
+        <div>
+            <h3>Parece que esta vacío por aquí.</h3>
+        </div>
+    </div><br />
+
+    <div class="d-flex" *ngIf="students.length > 0">
+        <ul class="list-inline mx-auto justify-content-center">
+            <li *ngFor="let student of students" class="list-group-item items"
+                (click)="redirectToView('course/'+ this.course.id +'/student/'+ student.id + '/details')"
+                placement="top" ngbTooltip="Tooltip on top">
+                <a>{{student.firstName}} {{student.lastName}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <i class="far fa-calendar-alt fa-3x"></i>
+    <div class="midText d-flex">
+        <div class="txt">
+            <h3>Clases anteriores:</h3>
+        </div>
+    </div>
+
+    <div class="midText d-flex" *ngIf="!dates.length > 0">
+        <div>
+            <h3>Parece que esta vacío por aquí.</h3>
+        </div>
+    </div><br />
+
+    <div class="list-container" *ngIf="dates.length > 0">
+        <ul class="list-centered">
+            <li *ngFor="let classDay of dates" class="list-group-item items"
+                (click)="redirectToView('clase/' + classDay.id + '/cursoFinalizado/' + this.course.id)">
+                <a>{{classDay.date | date: 'dd/MM/yyyy'}} </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<app-back-button [url]="url">
+</app-back-button>
+<app-spinner *ngIf="hideSpinner" [isHidden]="true">
+</app-spinner>

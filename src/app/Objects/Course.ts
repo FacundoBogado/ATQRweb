@@ -4,51 +4,48 @@ import { ClassDay } from './ClassDay';
 
 export class Course{
     private Id: number;
-    private Asignature: Asignature;
-    private Code: string;
-    private Students: Array<Student>;
-    private Professor: Professor;
-    private ClassDayList: Array<ClassDay>;
+    private asignature: Asignature;
+    private students: Array<Student>;
+    private professor: Professor;
+    private classDayList: Array<ClassDay>;
 
-    constructor() { }
+    constructor(asignature: Asignature, students: Array<Student>, professor: Professor,  classDayList: Array<ClassDay>) {
+        this.asignature = asignature;
+        this.students = students;
+        this.professor = professor;
+        this.classDayList = classDayList;
+     }
 
     public get getAsignature(): Asignature {
-        return this.Asignature;
+        return this.asignature;
     }
 
     public set setAsignature(value: Asignature) {
-        this.Asignature = value;
-    }
-
-    public get getode(): string {
-        return this.Code;
-    }
-    public set setCode(value: string) {
-        this.Code = value;
+        this.asignature = value;
     }
 
     public get getStudents(): Array<Student> {
-        return this.Students;
+        return this.students;
     }
 
     public set setStudents(value: Array<Student>) {
-        this.Students = value;
+        this.students = value;
     }
 
     public get getProfessor(): Professor {
-        return this.Professor;
+        return this.professor;
     }
 
     public set setProfessor(value: Professor) {
-        this.Professor = value;
+        this.professor = value;
     }
 
     public get getClassDayList(): Array<ClassDay> {
-        return this.ClassDayList;
+        return this.classDayList;
     }
 
     public set setClassDayList(value: Array<ClassDay>) {
-        this.ClassDayList = value;
+        this.classDayList = value;
     }
 
 }

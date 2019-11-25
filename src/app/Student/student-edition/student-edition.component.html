@@ -1,0 +1,13 @@
+<app-edition-view
+[firstName]="firstName"
+[lastName]="lastName"
+[document]="document"
+[email]="email"
+[birth]="birth"
+[password]="password"
+[back]="'/listaEstudiantes'"
+[userToBeEdited]="student">    
+</app-edition-view>
+
+<app-spinner *ngIf="hideSpinner" [isHidden]="true">
+</app-spinner> 
